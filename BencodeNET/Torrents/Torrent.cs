@@ -231,7 +231,7 @@ namespace BencodeNET.Torrents
                 torrent[TorrentFields.Announce] = new BString(Trackers.Flatten().First(), Encoding);
 
             if (trackerCount > 1)
-                torrent[TorrentFields.AnnounceList] = new BList(Trackers.Select(x => new BList(x, Encoding)));
+                torrent[TorrentFields.AnnounceList] = new BList(Trackers.Select(x => new BList(x, Encoding).ToString()));
 
             if (Encoding != null)
                 torrent[TorrentFields.Encoding] = new BString(Encoding.WebName.ToUpper(), Encoding);

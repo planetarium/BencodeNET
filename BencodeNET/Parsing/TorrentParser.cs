@@ -338,9 +338,7 @@ namespace BencodeNET.Parsing
                 trackerList[0] = primary.Distinct().ToList();
 
                 // Add the other lists to the lists of lists of announce urls
-                trackerList.AddRange(
-                    announceLists.Skip(1)
-                        .Select(x => x.AsStrings(encoding).ToList()));
+                trackerList.AddRange(announceLists.Skip(1).Select(x => x.AsStrings(encoding).ToList()) as IEnumerable<IList <string> >);
             }
 
             return trackerList;

@@ -117,14 +117,14 @@ namespace BencodeNET.Torrents
 
             var magnet = $"magnet:?xt=urn:btih:{infoHash}";
 
-            if (!string.IsNullOrWhiteSpace(displayName))
+            if (!StringUtil.IsNullOrWhiteSpace(displayName))
                 magnet += $"&dn={displayName}";
 
-            var validTrackers = trackers?.Where(x => !string.IsNullOrWhiteSpace(x)).ToList() ?? new List<string>();
+            var validTrackers = trackers?.Where(x => !StringUtil.IsNullOrWhiteSpace(x)).ToList() ?? new List<string>();
 
             if (options.HasFlag(MagnetLinkOptions.IncludeTrackers) && validTrackers.Any())
             {
-                var trackersString = string.Join("&", validTrackers.Select(x => $"tr={x}"));
+                var trackersString = string.Join("&", validTrackers.Select(x => $"tr={x}").ToArray());
                 magnet += $"&{trackersString}";
             }
 

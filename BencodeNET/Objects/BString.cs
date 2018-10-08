@@ -13,7 +13,7 @@ namespace BencodeNET.Objects
     /// <remarks>
     /// The underlying value is a <see cref="byte"/> array.
     /// </remarks>
-    public class BString : BObject<IReadOnlyList<byte>>, IComparable<BString>
+    public class BString : BObject<IList<byte>>, IComparable<BString>
     {
         /// <summary>
         /// The maximum number of digits that can be handled as the length part of a bencoded string.
@@ -23,7 +23,7 @@ namespace BencodeNET.Objects
         /// <summary>
         /// The underlying bytes of the string.
         /// </summary>
-        public override IReadOnlyList<byte> Value => _value;
+        public override IList<byte> Value => _value;
         private readonly byte[] _value;
 
         /// <summary>
